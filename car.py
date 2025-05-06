@@ -8,7 +8,7 @@ class Car(Turtle):
         self.setheading(180)
         self.shape("square")
         self.shapesize(1,3)
+        self.moving_speed = 10
 
     def move_forward(self):
-        distance = random.randint(0,20)
-        self.forward(distance)
+        self.forward(self.moving_speed)
