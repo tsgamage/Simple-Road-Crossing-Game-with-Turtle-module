@@ -10,6 +10,9 @@ class Player(Turtle):
         self.penup()
         self.teleport(0,-280)
 
+    def go_to_start(self):
+        self.teleport(0,-280)
+
     def go_up(self):
         if self.ycor() <= 270:
             self.forward(MOVE_DISTANCE)
