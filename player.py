@@ -14,9 +14,9 @@ class Player(Turtle):
         self.teleport(0,-280)
 
     def go_up(self):
-        if self.ycor() <= 270:
+        if self.ycor() <= 270: # Check if the player is not going out of bounds.
             self.forward(MOVE_DISTANCE)
 
     def go_down(self):
-        if self.ycor() >= -270:
+        if self.ycor() >= -270: # Check if the player is not going out of bounds.
             self.backward(MOVE_DISTANCE)
