@@ -9,6 +9,7 @@ from car import Car
 screen = Screen()
 screen.setup(width=800, height=600)
 screen.tracer(0)
+screen.title("Road Crossing Game")
 
 player = Player()
 road = Road()
@@ -20,13 +21,18 @@ for y_cord in range(-300, 300, 40):
 
 # Spawn cars randomly
 car_obj: list = list()
+recent_y_cords = [0]
 y_cords = (-280, -240, -200, -160, -120, -80, -40, 0, 40, 80, 120, 160, 200, 240, 280)
 spawn_count = 0
-spawn_rate = 5
+spawn_rate = 4
+
 def spawn_car():
+    random_y_cord = random.choice(y_cords)
+
     car = Car()
-    car.teleport(400, random.choice(y_cords))
     car_obj.append(car)
+    car.teleport(400, random_y_cord)
+    recent_y_cords.append(random_y_cord)
 
 screen.listen()
 screen.onkey(player.go_up, "w")
@@ -40,7 +46,12 @@ while _game_running:
         spawn_car()
 
     for car in car_obj:
+        if player.distance(car) < 40 and player.ycor() == car.ycor() :
+            _game_running = False
+            print("Game Over!")
+
         car.move_forward()
+
 
     screen.update()
     spawn_count += 1
