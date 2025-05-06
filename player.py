@@ -8,6 +8,7 @@ class Player(Turtle):
         self.shape("turtle")
         self.setheading(90)
         self.penup()
+        self.teleport(0,-280)
 
     def go_up(self):
         if self.ycor() <= 270:
